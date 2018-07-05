@@ -8,3 +8,10 @@ header{
     /* margin: auto; */
     text-align: center;
 }
+container{
+    display:flex;
+} 
+experience{
+    display:flex;
+    flex-direction: column;
+}
