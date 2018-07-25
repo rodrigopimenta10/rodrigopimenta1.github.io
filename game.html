@@ -1,0 +1,74 @@
+<html>
+
+<head>
+
+    <script> 
+        //    embedded javascript
+        var letter = "X";
+        window.onload = function() {
+
+            document.getElementById("r1c1").onclick = function() {
+                document.getElementById("r1c1").innerHTML = letter;
+                letter = "O";
+
+            }
+
+
+        }
+    </script>
+    <style>
+       /* embedded css */
+       .row {
+           border: 2px solid red;
+           height: 80px;
+           margin: 10px;
+           padding: 10px;
+           width: 500px;
+           display: inline-block;
+       }
+       .col {
+           border: 2px solid blue;
+           width: 100px;
+           display: inline-block;
+           margin: 10px;
+       }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col" id="r1c1">
+            ?
+        </div>
+        <div class="col">
+            ?
+        </div>
+        <div class="col">
+            ?
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+</body>
+
+</html>

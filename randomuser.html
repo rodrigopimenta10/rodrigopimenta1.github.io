@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  	<head>
+  		<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AJAX API</title>
+		<style>
+output { display: block; margin-top: 25px; border-top: 3px double purple; padding-top: 15px; }
+output img:hover { animation: grow 0.25s forwards; z-index: 1; cursor: pointer; }
+@keyframes grow { to { transform: scale(1.25); } }
+        </style>
+		<script>
+/**********************************************************************/
+
+document.addEventListener("DOMContentLoaded", init);
+function init(){
+  	document.querySelector("button").addEventListener("click", getPeople);
+}
+
+function getPeople(){
+	var url = "https://randomuser.me/api/?results=";
+	url += document.querySelector("input").value;
+	ajax(url, handleServerData);
+}
+
+function handleServerData(data){
+	console.log(data); //data is what comes back from the server at the url
+	var html = "";
+    for (let i=0; i<data.results.length; i++){
+    	html += "<img src='" + data.results[i].picture.large + "' />";
+	}
+	document.querySelector("output").innerHTML = html;
+}
+
+function ajax(url, callback){
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function(){
+        if (req.readyState === 4){ //exchange is complete
+            if (req.status === 200){
+                //no error! :)
+                //call the callback only IF it is a function
+                //and pass in the data returned by the server
+                var jsonFromServer = JSON.parse(req.responseText);
+                "function" === typeof callback && callback(jsonFromServer);
+            }
+            else {
+                //error occurred
+                console.log(req.status, req.statusText);
+            }
+        }
+    }
+    req.open("GET", url, true);
+    req.send();
+}
+
+/**********************************************************************/
+        </script>
+  	</head>
+	<body>
+      	<input type="number" min=1 max=5000 value=10 />
+        <button>Get People</button>
+        <output></output>
+	</body>
+</html>
