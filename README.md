@@ -1,0 +1,1 @@
+Create an account and grab your own free key to pull data for free from https://openweathermap.org/ so that you can check out https://rodrigopimenta10.github.io/experimenting.html.

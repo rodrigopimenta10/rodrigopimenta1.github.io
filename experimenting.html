@@ -1,7 +1,7 @@
 <html>
 <head>
 
-    <script> 
+    <script>
         const degC = "&deg;C";
         const br = "<br/>" ;
         function loadDoc(url) {
@@ -11,8 +11,8 @@
                     document.getElementById("demo").innerHTML = this.responseText;
                     let json = JSON.parse(this.responseText);
                     console.log(json.main.temp);
-                    document.getElementById("temperature").innerHTML = br + "Current: " + json.main.temp + degC + 
-                    br + "Min: " + json.main.temp_min + degC + 
+                    document.getElementById("temperature").innerHTML = br + "Current: " + json.main.temp + degC +
+                    br + "Min: " + json.main.temp_min + degC +
                     br + "Max: " + json.main.temp_max + degC;
                 }
             };
@@ -28,7 +28,7 @@
 
 <body>
     <h1>Rod's Charlotte Weather Page</h1>
-    <div>Calling/Displaying OpenWeatherMap API info using free key
+    <div>Calling/Displaying OpenWeatherMap API info using free key. Make sure you have you make your account and grab your own free key from https://openweathermap.org/ in order to be able to pull the JSON information and see this webpage.
         <br/><br/>
     </div>
     <div id="demo">
