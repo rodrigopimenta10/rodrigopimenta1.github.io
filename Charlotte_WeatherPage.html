@@ -1,0 +1,38 @@
+<html>
+<head>
+
+    <script> 
+        const degC = "&deg;C";
+        const br = "<br/>" ;
+        function loadDoc(url) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML = this.responseText;
+                    let json = JSON.parse(this.responseText);
+                    console.log(json.main.temp);
+                    document.getElementById("temperature").innerHTML = br + "Current: " + json.main.temp + degC + 
+                    br + "Min: " + json.main.temp_min + degC + 
+                    br + "Max: " + json.main.temp_max + degC;
+                }
+            };
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        window.onload = function () {
+            let url = 'http://api.openweathermap.org/data/2.5/weather?q=Charlotte&units=metric&appid=3244221afc934712dfb07f8dd129e94e';
+            loadDoc(url);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Rod's Charlotte Weather Page</h1>
+    <div>Calling/Displaying OpenWeatherMap API info using free key</div>
+    <div id="demo">
+    </div>
+    <div id="temperature">
+    </div>
+</body>
+
+</html>
